@@ -3,7 +3,7 @@
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/yonghe.airalogy-markdown-studio?label=VS%20Code%20Marketplace&logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=yonghe.airalogy-markdown-studio)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/yonghe.airalogy-markdown-studio?label=Installs&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=yonghe.airalogy-markdown-studio)
 [![Open VSX](https://img.shields.io/open-vsx/v/yonghe/airalogy-markdown-studio?label=Open%20VSX&logo=eclipse)](https://open-vsx.org/extension/yonghe/airalogy-markdown-studio)
-[![GitHub](https://img.shields.io/github/license/airalogy/studio?label=License)](https://github.com/airalogy/studio/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/airalogy/studio/blob/main/LICENSE)
 
 Airalogy Markdown Studio is a professional VS Code extension designed for editing and previewing AIMD (Airalogy Markdown) protocol files — an extended Markdown format for defining experimental protocols with interactive templates like variables, steps, and checkpoints. It provides a modern, "Scientific Minimalist" preview interface to help scientists and researchers visualize their experimental workflows.
 
