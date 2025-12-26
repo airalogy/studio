@@ -1,0 +1,23 @@
+.vscode/**
+.vscode-test/**
+.github/**
+archive/**
+learn_ref/**
+simple_example/**
+complex_example/**
+example_protocol/**
+src/**
+python/build_backend.py
+python/build/**
+node_modules/**
+.gitignore
+tsconfig.json
+vite.config.ts
+jest.config.js
+*.log
+*.map
+.DS_Store
+# Include compiled binaries and bundled code
+!bin/**
+!out/extension/*.js
+!out/extension/*.js.map

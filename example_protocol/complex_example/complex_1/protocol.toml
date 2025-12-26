@@ -1,0 +1,7 @@
+[airalogy_protocol]
+id = "quantum_cck8_assay"
+version = "2.0.0"
+name = "星际联邦生物实验协议"
+description = "利用量子共振 CCK-8 法评估时空裂隙能量对多维度肿瘤细胞增殖的抑制作用，展示 Airalogy 所有模板类型的使用方法"
+logo = "files/logo.png"
+banner = "files/banner.png"

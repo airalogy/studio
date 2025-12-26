@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build output
+out/
+dist/
+build/
+bin/
+*.vsix
+
+# VS Code
+.vscode-test/
+.history/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Local data & Mock
+.airalogy_mock/
+**/ .airalogy_mock/
+
+# Archive & temporary
+archive/
+learn_ref/
+*.tmp
+*.temp
+test-components.aimd
+
+# Example artifacts
+examples/**/.airalogy_mock/

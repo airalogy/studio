@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "message": "SUCCEED",
+  "request_id": "1f272d93-b309-4db8-b76b-3b8686c4e7d1",
+  "data": {
+    "task_id": "832709909682077732",
+    "task_status": "submitted",
+    "task_info": {
+      "external_task_id": "prometheus_1766562028"
+    },
+    "created_at": 1766562032251,
+    "updated_at": 1766562032251
+  }
+}

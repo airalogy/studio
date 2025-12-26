@@ -1,0 +1,60 @@
+# Alice's Protocol
+
+**目标：** 利用 CCK-8 法评估某药物对肿瘤细胞增殖的抑制作用。
+
+## 基本信息
+
+实验者姓名：{{var|experimenter_name}}
+实验时间：{{var|experiment_time}}
+
+## 实验步骤
+
+{{step|cell_seeding}} 细胞铺板
+
+将 {{var|cell_line_name}} 细胞以每孔 {{var|seeding_density}} 个细胞的密度播种到 96 孔板中的两个孔中——一个作为对照组，一个作为处理组。  
+培养 {{var|adhesion_time}} 小时，以便细胞贴壁。
+
+{{step|prepare_plate, 2, check=True}} 准备 96 孔板
+- 检查孔板是否洁净
+- 标记对照组和处理组位置
+
+{{step|seed_cells, 2}} 移液操作
+- 吸取细胞悬液
+- 小心加入孔中
+
+{{check|check_cell_attachment}} 在继续操作前，请确保细胞已经充分贴壁且状态良好。
+
+{{step|drug_treatment}} 药物处理
+
+配制浓度为 {{var|drug_concentration}} μM 的 {{var|drug_name}} 水溶液。  
+将处理组的细胞用该药物溶液处理，对照组则保持不处理。  
+培养 {{var|treatment_duration}} 小时。
+
+{{step|dissolve_drug, 2, check=True}} 药物溶解
+- 称量药物粉末
+- 加入溶剂溶解
+
+{{step|add_to_wells, 2, check=True, checked_message="Drug added"}} 加入孔板
+- 加入处理组
+- 加入对照组（溶剂）
+
+{{step|cell_viability_assay}} 细胞活力检测
+
+加入 CCK-8 试剂，并进行相应的培养。  
+使用酶标仪测定光密度（OD）：  
+
+{{step|add_reagent, 2}} 加入 CCK-8
+- 每孔加入 10ul
+- 避免气泡
+
+{{step|measure_od, 2}} 酶标仪读数
+- 设置波长 450nm
+- 读取数据
+
+- 对照组 OD：{{var|control_group_od}}  
+- 处理组 OD：{{var|treatment_group_od}}
+
+{{step|calculate_inhibition_rate}} 计算抑制率
+
+抑制率：{{var|inhibition_rate}} %  
+计算公式：抑制率 = [1 - (处理组 OD ÷ 对照组 OD)] × 100%.

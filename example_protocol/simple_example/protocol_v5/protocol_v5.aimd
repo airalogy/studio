@@ -1,0 +1,343 @@
+# 🌌 星际联邦生物实验协议 v2.0
+
+**任务代号：** Project Prometheus - 跨维度细胞再生研究
+**目标：** 利用量子共振 CCK-8 法评估时空裂隙能量对多维度肿瘤细胞增殖的抑制作用
+
+> [!NOTE] 📚 关于本文档
+> 本协议是星际联邦第七研究院的标准实验模板，展示了 Airalogy 所有模板类型的使用方法。
+> 每个模板类型都配有 callout 说明，方便跨星系研究员学习使用。
+
+---
+
+## 🛸 任务基本信息
+
+> [!TIP] 🌟 Airalogy 自动填充类型
+> 以下字段使用 Airalogy 自有类型，系统会自动获取数据：
+> - `UserName` - 自动识别当前操作员的星际身份
+> - `CurrentTime` - 自动记录当前时空坐标
+> - `CurrentRecordId` - 自动生成本次实验的唯一量子签名
+
+**操作员身份认证**
+
+星际研究员：{{var|operator}}
+时空坐标记录：{{var|record_time}}
+量子签名 ID：{{var|current_record_id}}
+
+> [!TIP] 🔢 带类型的变量模板
+> 使用 `{{var|id: type = default}}` 语法定义类型和约束
+
+任务代号：{{var|mission_code: str = "PRO-2024-001", title="任务代号", description="星际联邦任务编码"}}
+协议版本：{{var|protocol_version}}
+所属维度：{{var|dimension_id: str = "D-616", title="维度编号", description="当前实验所在的平行宇宙维度"}}
+研究站点：{{var|research_station: str, title="研究站点", description="星际研究站编号"}}
+
+---
+
+## 👥 研究团队信息
+
+> [!TIP] 📊 变量表格模板
+> 使用 `subvars` 创建可编辑表格，记录团队成员信息
+
+{{step|team_registration}} 团队成员登记
+
+请登记参与本次跨维度实验的所有研究员：
+
+{{var|research_team,
+    title="研究团队成员表",
+    description="跨维度实验参与人员登记",
+    subvars=[
+        var(name: str = "", title="研究员姓名", description="星际联邦注册名"),
+        var(species: str = "人类", title="种族", description="生物种族分类"),
+        var(home_dimension: str = "D-616", title="原生维度", description="研究员来自的平行宇宙"),
+        var(clearance_level: int = 1, title="安全等级", description="星际联邦安全许可等级 1-10"),
+        var(specialty: str = "", title="专业领域", description="研究专长")
+    ]
+}}
+
+> [!EXAMPLE] 变量表格默认值
+> 在 `model.py` 中使用 `default_factory` 可以预填充团队模板
+
+---
+
+## 📋 实验步骤
+
+> [!TIP] 📋 步骤模板
+> 使用 `{{step|id, level, check=True}}` 组织实验流程
+
+{{step|sample_collection}} 跨维度样本采集
+
+> [!TIP] 🔗 关联记录类型 (RecordId)
+> 使用 `RecordId` 类型可以关联其他实验记录，UI 显示为下拉选择框
+
+关联的前序实验：{{var|previous_experiment}}
+样本来源维度：{{var|sample_source_dimension: str = "D-199", title="样本维度", description="细胞样本采集的平行宇宙编号"}}
+
+{{step|open_portal, 2, check=True}} 开启维度传送门
+- 校准量子隧穿参数
+- 确认目标维度坐标
+- 启动时空稳定器
+
+{{step|collect_cells, 2}} 采集多维度细胞
+- 使用反物质容器收集样本
+- 记录采集时的时空扭曲系数
+
+将 {{var|cell_line_name: str = "Hela-X7", title="细胞系名称", description="跨维度肿瘤细胞系编号"}} 细胞从维度 {{ref_var|sample_source_dimension}} 传送至当前实验室。
+
+---
+
+## ✅ 安全检查点
+
+> [!TIP] ✅ 检查点模板
+> 使用 `{{check|id}}` 创建必须确认的安全节点
+
+{{check|dimension_stability}} 确认维度裂隙稳定，无时空塌缩风险。
+
+{{check|containment_field, checked_message="防护力场已激活"}} 确认量子防护力场已启动，防止样本逃逸至其他维度。
+
+{{check|ethics_approval, checked_message="伦理审批已通过"}} 确认已获得星际联邦跨维度生物实验伦理委员会批准。
+
+---
+
+## 🧬 细胞培养与处理
+
+{{step|cell_culture}} 量子培养箱设置
+
+> [!TIP] 📁 文件上传类型 (FileId*)
+> 使用 `FileIdPNG`, `FileIdCSV` 等类型创建文件上传按钮
+
+培养箱设置截图：{{var|incubator_settings_photo}}
+细胞初始状态照片：{{var|cell_initial_photo}}
+
+将细胞以每孔 {{var|seeding_density: int = 5000, title="接种密度", ge=1000, le=50000, description="每孔接种的细胞数量"}} 个细胞的密度播种到 96 孔量子培养板中。
+
+培养条件：
+- 温度：{{var|culture_temp: float = 37.0, title="培养温度 (°C)", ge=20, le=45}}
+- CO₂ 浓度：{{var|co2_level: float = 5.0, title="CO₂浓度 (%)", ge=0, le=10}}
+- 时空稳定场强度：{{var|stability_field: float = 99.9, title="稳定场强度 (%)", ge=95, le=100}}
+
+培养 {{var|adhesion_time: float = 24.0, title="贴壁时间 (小时)", ge=0}} 小时，等待细胞适应当前维度的物理常数。
+
+---
+
+## 💊 时空裂隙能量处理
+
+{{step|energy_treatment}} 时空能量注入
+
+> [!TIP] 🔗 步骤引用模板
+> 使用 `{{ref_step|id}}` 引用之前定义的步骤
+
+根据 {{ref_step|sample_collection}} 中采集的样本特性，配制时空裂隙能量溶液。
+
+能量来源：{{var|energy_source: str = "黑洞边界辐射", title="能量来源", description="时空裂隙能量的采集来源"}}
+基础能量浓度：{{var|base_energy_level: float = 1000.0, title="基础能量 (TeV)", ge=0, description="时空能量基础浓度"}}
+
+{{step|prepare_energy_gradient, 2, check=True}} 配制能量梯度
+
+请在下表中记录每个能量梯度的配制信息：
+
+{{var|energy_dilutions,
+    title="时空能量梯度配制表",
+    description="记录各能量梯度的配制详情",
+    subvars=[
+        var(energy_level: float = 0.0, title="能量等级 (TeV)", description="最终能量浓度"),
+        var(source_volume: float = 0.0, title="源能量用量 (μL)", description="从能量源中提取的量"),
+        var(stabilizer_volume: float = 100.0, title="稳定剂用量 (μL)", description="时空稳定剂添加量"),
+        var(well_position: str = "", title="孔位", description="量子培养板位置"),
+        var(dimension_phase: str = "α", title="维度相位", description="能量注入时的维度相位 α/β/γ")
+    ]
+}}
+
+{{step|inject_energy, 2, check=True, checked_message="能量注入完成"}} 注入时空能量
+- 按照上表将各能量等级注入对应孔位
+- 对照组注入纯净维度稳定剂
+- 记录注入时的量子涨落
+
+处理时间：{{var|treatment_duration: float = 48.0, title="处理时间 (小时)", ge=1, le=168}} 小时
+
+---
+
+## 📊 量子共振检测
+
+{{step|quantum_detection}} 量子共振 CCK-8 检测
+
+> [!TIP] 🔗 变量引用模板
+> 使用 `{{ref_var|id}}` 引用之前输入的变量值
+
+本实验使用的细胞系为 {{ref_var|cell_line_name}}，来自维度 {{ref_var|sample_source_dimension}}，
+基础能量浓度为 {{ref_var|base_energy_level}} TeV。
+
+{{step|add_quantum_reagent, 2}} 加入量子 CCK-8 试剂
+- 每孔加入 10μL 量子增强型 CCK-8 试剂
+- 试剂需在绝对零度以上 0.001K 保存
+- 避免暴露于强引力场
+
+孵育时间：{{var|cck8_incubation_time: float = 2.0, title="CCK-8孵育时间 (小时)", ge=0.5, le=4}}
+
+{{step|measure_quantum_od, 2, check=True}} 量子光谱仪读数
+
+使用跨维度量子光谱仪测量各孔的量子共振值：
+
+{{var|quantum_measurements,
+    title="量子共振测量记录表",
+    description="记录各孔的量子共振数据",
+    subvars=[
+        var(well_position: str = "", title="孔位", description="量子培养板位置"),
+        var(od_value: float = 0.0, title="OD值 (450nm)", description="传统吸光度值"),
+        var(quantum_resonance: float = 0.0, title="量子共振值 (QR)", description="跨维度量子共振强度"),
+        var(dimension_interference: float = 0.0, title="维度干扰系数", description="其他维度的干扰程度"),
+        var(group_type: str = "处理组", title="分组", description="对照组/处理组/空白组"),
+        var(energy_level: float = 0.0, title="能量等级 (TeV)", description="该孔对应的能量浓度")
+    ]
+}}
+
+原始数据文件：{{var|raw_data_file}}
+
+{{check|measurement_complete, checked_message="量子测量完成"}} 确认所有孔位的量子共振值已记录完毕。
+
+---
+
+## 🧮 跨维度数据分析
+
+{{step|data_analysis}} 计算时空抑制率
+
+> [!TIP] 📝 代码编辑器类型 (PyStr)
+> 使用 `PyStr` 类型可以嵌入 Python 代码，带语法高亮
+
+空白对照量子共振均值：{{var|blank_qr_mean: float, title="空白QR均值", ge=0}}
+阴性对照量子共振均值：{{var|control_qr_mean: float, title="对照组QR均值", ge=0}}
+
+数据处理脚本：{{var|data_processing_script}}
+
+请在下表中记录各能量等级的抑制率计算结果：
+
+{{var|inhibition_results,
+    title="时空抑制率计算结果表",
+    description="各能量等级下的细胞抑制率",
+    subvars=[
+        var(energy_level: float = 0.0, title="能量等级 (TeV)", description="测试能量浓度"),
+        var(treatment_qr_mean: float = 0.0, title="处理组QR均值", description="该能量等级处理组的量子共振平均值"),
+        var(inhibition_rate: float = 0.0, title="抑制率 (%)", description="计算得到的抑制百分比"),
+        var(dimension_correction: float = 1.0, title="维度校正系数", description="跨维度误差校正"),
+        var(confidence_level: str = "高", title="置信度", description="结果可信度评估"),
+        var(notes: str = "", title="备注", description="异常现象记录")
+    ]
+}}
+
+> [!INFO] 时空抑制率计算公式
+> 抑制率 (%) = [1 - (处理组QR - 空白QR) / (对照组QR - 空白QR)] × 维度校正系数 × 100%
+> 
+> 其中：
+> - 空白 QR = {{ref_var|blank_qr_mean}}
+> - 对照组 QR = {{ref_var|control_qr_mean}}
+
+----
+
+## 📸 实验影像记录
+
+{{step|image_documentation}} 影像资料归档
+
+> [!TIP] 📁 多种文件上传类型
+> Airalogy 支持多种文件格式的上传
+
+细胞处理前照片：{{var|cell_before_photo}}
+细胞处理后照片：{{var|cell_after_photo}}
+维度裂隙全息图：{{var|dimension_rift_hologram}}
+实验过程视频：{{var|experiment_video}}
+
+---
+
+## 📝 实验备注与结论
+
+{{step|conclusion}} 实验总结
+
+> [!TIP] 📝 Markdown 编辑器类型 (AiralogyMarkdown)
+> 使用 `AiralogyMarkdown` 类型提供富文本编辑器
+
+实验备注（支持 Markdown 格式）：{{var|experiment_notes}}
+
+> [!TIP] 🔒 敏感数据类型 (IgnoreStr)
+> 使用 `IgnoreStr` 类型存储敏感信息，保存时会自动清空
+
+星际联邦数据库 API 密钥（用于上传结果，不会保存）：{{var|federation_api_key}}
+
+---
+
+## ✅ 实验完成确认
+
+{{check|experiment_complete, checked_message="实验已完成"}} 确认所有步骤已完成，数据已同步至星际联邦数据库。
+
+{{check|dimension_sealed, checked_message="维度裂隙已封闭"}} 确认实验结束后已关闭所有维度传送门，防止时空污染。
+
+### 🌟 任务信息汇总
+
+| 项目 | 值 |
+|------|-----|
+| 操作员 | {{ref_var|operator}} |
+| 时空坐标 | {{ref_var|record_time}} |
+| 任务代号 | {{ref_var|mission_code}} |
+| 所属维度 | {{ref_var|dimension_id}} |
+| 细胞系 | {{ref_var|cell_line_name}} |
+| 样本来源维度 | {{ref_var|sample_source_dimension}} |
+| 能量来源 | {{ref_var|energy_source}} |
+| 基础能量 | {{ref_var|base_energy_level}} TeV |
+| 处理时间 | {{ref_var|treatment_duration}} 小时 |
+
+实验报告：{{var|final_report}}
+
+---
+
+## 📖 模板类型速查表
+
+> [!ABSTRACT] 基础模板类型
+> 
+> | 模板类型 | 语法 | 用途 |
+> |---------|------|------|
+> | 变量 | `{{var\|<var_id>}}` | 收集用户输入数据 |
+> | 带类型变量 | `{{var\|<var_id>: <type> = <default>}}` | 带类型约束的变量 |
+> | 步骤 | `{{step\|<step_id>[, level][, check=True]}}` | 组织工作流程 |
+> | 检查点 | `{{check\|<check_id>}}` | 关键验证点 |
+> | 变量表格 | `{{var\|<var_id>, subvars=[...]}}` | 创建可编辑表格 |
+> | 步骤引用 | `{{ref_step\|<step_id>}}` | 引用已定义的步骤 |
+> | 变量引用 | `{{ref_var\|<var_id>}}` | 引用变量的值 |
+
+> [!ABSTRACT] Airalogy 自有类型 - 自动填充
+> 
+> | 类型 | 用途 | 本协议示例 |
+> |------|------|-----------|
+> | `UserName` | 自动填充当前用户 | `operator` |
+> | `CurrentTime` | 自动填充当前时间 | `record_time` |
+> | `CurrentRecordId` | 自动填充记录 ID | `current_record_id` |
+> | `VersionStr` | 语义化版本号 | `protocol_version` |
+
+> [!ABSTRACT] Airalogy 自有类型 - 文件上传
+> 
+> | 类型 | 用途 | 本协议示例 |
+> |------|------|-----------|
+> | `FileIdPNG` | PNG 图片上传 | `cell_initial_photo`, `cell_before_photo` |
+> | `FileIdJPG` | JPG 图片上传 | `cell_after_photo` |
+> | `FileIdTIFF` | TIFF 图片上传 | `dimension_rift_hologram` |
+> | `FileIdCSV` | CSV 数据上传 | `raw_data_file` |
+> | `FileIdPDF` | PDF 文档上传 | `final_report` |
+> | `FileIdMP4` | MP4 视频上传 | `experiment_video` |
+
+> [!ABSTRACT] Airalogy 自有类型 - 特殊输入
+> 
+> | 类型 | 用途 | 本协议示例 |
+> |------|------|-----------|
+> | `RecordId` | 关联其他记录 | `previous_experiment` |
+> | `AiralogyMarkdown` | Markdown 编辑器 | `experiment_notes` |
+> | `PyStr` | Python 代码编辑器 | `data_processing_script` |
+> | `IgnoreStr` | 敏感数据（不持久化） | `federation_api_key` |
+
+> [!WARNING] 使用注意事项
+> 1. **Airalogy 自有类型必须在 model.py 中定义**，不能在 AIMD 内联使用
+> 2. **自动填充类型**会自动获取值，无需用户输入
+> 3. **文件上传类型**存储的是文件 ID，格式为 `airalogy.id.file.<uuid>.<ext>`
+> 4. **IgnoreStr 类型**的值在保存时会被清空，适合 API Key 等敏感数据
+> 5. **RecordId 类型**会渲染为下拉选择框，可选择其他实验记录
+
+> [!INFO] 跨维度实验特别提醒
+> - 实验结束后务必关闭所有维度传送门
+> - 量子共振测量需在时空稳定场强度 > 95% 时进行
+> - 如遇时空悖论，请立即联系星际联邦时间管理局
+> - 禁止将实验样本带回原生维度，以防时间线污染

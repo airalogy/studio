@@ -1,0 +1,85 @@
+name: Build Python Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'python/**'
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win32
+            arch: x64
+          - os: macos-latest
+            platform: darwin
+            arch: arm64
+          - os: macos-15
+            platform: darwin
+            arch: x64
+          - os: ubuntu-latest
+            platform: linux
+            arch: x64
+
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+          pip install git+https://github.com/airalogy/airalogy.git
+
+      - name: Build binary
+        run: python python/build_backend.py
+
+      - name: List binaries (Unix)
+        if: runner.os != 'Windows'
+        run: ls -la bin/
+
+      - name: List binaries (Windows)
+        if: runner.os == 'Windows'
+        run: dir bin
+        shell: cmd
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aimd-server-${{ matrix.platform }}-${{ matrix.arch }}
+          path: bin/aimd-server-*
+          retention-days: 30
+
+  # Combine all binaries into single artifact
+  package:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: bin
+          merge-multiple: true
+
+      - name: List all binaries
+        run: ls -la bin/
+
+      - name: Upload combined artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aimd-server-all-platforms
+          path: bin/
+          retention-days: 90

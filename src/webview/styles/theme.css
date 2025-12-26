@@ -1,0 +1,223 @@
+/* ==========================================================================
+   AIMD Studio - Core Theme Tokens
+   Supports Light (Default) and Dark (VS Code Context) Modes
+   ========================================================================== */
+
+:root {
+  /* --- Palette Primitives (Light Mode Defaults) --- */
+
+  /* Brand Colors */
+  --aimd-brand-primary: #15803d;
+  /* Green 700 */
+  --aimd-brand-secondary: #0f766e;
+  /* Teal 700 */
+
+  /* Functional Colors (Light) */
+  --aimd-bg-page: var(--vscode-editor-background, #ffffff);
+  --aimd-bg-primary: #ffffff;
+  --aimd-bg-secondary: #f8fafc;
+  /* Slate 50 */
+  --aimd-bg-tertiary: #f1f5f9;
+  /* Slate 100 */
+
+  --aimd-text-primary: var(--vscode-editor-foreground, #1e293b);
+  /* Slate 800 */
+  --aimd-text-secondary: #475569;
+  /* Slate 600 */
+  --aimd-text-tertiary: #94a3b8;
+  /* Slate 400 */
+  --aimd-text-inverse: #ffffff;
+
+  --aimd-border-subtle: #f1f5f9;
+  /* Slate 100 */
+  --aimd-border-light: #e2e8f0;
+  /* Slate 200 */
+  --aimd-border-medium: #cbd5e1;
+  /* Slate 300 */
+  --aimd-border-strong: #94a3b8;
+  /* Slate 400 */
+
+  /* Status: Success (Green) */
+  --aimd-status-success-bg: #f0fdf4;
+  --aimd-status-success-border: #bbf7d0;
+  --aimd-status-success-text: #166534;
+  --aimd-status-success-icon: #22c55e;
+
+  /* Status: Warning (Amber) */
+  --aimd-status-warning-bg: #fffbeb;
+  --aimd-status-warning-border: #fde68a;
+  --aimd-status-warning-text: #b45309;
+  --aimd-status-warning-icon: #f59e0b;
+
+  /* Status: Error (Red) */
+  --aimd-status-error-bg: #fef2f2;
+  --aimd-status-error-border: #fecaca;
+  --aimd-status-error-text: #b91c1c;
+  --aimd-status-error-icon: #ef4444;
+
+  /* Status: Info (Blue/Sky) */
+  --aimd-status-info-bg: #f0f9ff;
+  --aimd-status-info-border: #bae6fd;
+  --aimd-status-info-text: #0369a1;
+  --aimd-status-info-icon: #0ea5e9;
+
+  /* Code Blocks */
+  --aimd-code-bg: rgba(100, 116, 139, 0.08);
+  --aimd-code-text: #334155;
+  --aimd-pre-bg: #1e293b;
+  --aimd-pre-text: #e2e8f0;
+  --aimd-pre-border: #334155;
+
+  /* Elsevier VarInput Theme (Light) */
+  --aimd-var-elsevier-text: #111827;
+  --aimd-var-elsevier-border: #6b7280;
+  --aimd-var-elsevier-hover-bg: #f3f4f6;
+  --aimd-var-elsevier-hover-border: #111827;
+
+  /* CheckPill Theme (Light) */
+  --aimd-check-bg: #f8fafc;
+  --aimd-check-border: #cbd5e1;
+  --aimd-check-text: #475569;
+  --aimd-check-accent: #14b8a6;
+  --aimd-check-msg-bg: #ccfbf1;
+  --aimd-check-msg-text: #0f766e;
+
+  /* ==========================================================================
+     Westlake Theme (Swedish Minimalism) - Light Mode
+     Primary: Westlake Blue #00498F (60%)
+     Accent: Golden Orange #F18B1C (20%)
+     Neutral: Stone Grey #5B5657 (10%)
+     ========================================================================== */
+  --aimd-westlake-primary: #00498F;
+  --aimd-westlake-primary-light: #1a5fa6;
+  --aimd-westlake-primary-dark: #003366;
+  --aimd-westlake-accent: #F18B1C;
+  --aimd-westlake-accent-light: #f9a84d;
+  --aimd-westlake-neutral: #5B5657;
+  --aimd-westlake-neutral-light: #8a8586;
+
+  /* Westlake VarInput (Light) */
+  --aimd-var-westlake-text: #00498F;
+  --aimd-var-westlake-border: #00498F;
+  --aimd-var-westlake-hover-bg: rgba(0, 73, 143, 0.06);
+  --aimd-var-westlake-hover-border: #F18B1C;
+
+  /* Westlake CheckPill (Light) */
+  --aimd-check-westlake-accent: #00498F;
+  --aimd-check-westlake-msg-bg: rgba(0, 73, 143, 0.08);
+  --aimd-check-westlake-msg-text: #00498F;
+}
+
+/* --- Dark Mode Overrides --- */
+body.vscode-dark {
+  /* Functional Colors (Dark) */
+  --aimd-bg-page: var(--vscode-editor-background, #1e293b);
+  --aimd-bg-primary: #1e293b;
+  /* Slate 900 */
+  --aimd-bg-secondary: #0f172a;
+  /* Slate 950 */
+  --aimd-bg-tertiary: #334155;
+  /* Slate 700 */
+
+  --aimd-text-primary: var(--vscode-editor-foreground, #e2e8f0);
+  /* Slate 200 */
+  --aimd-text-secondary: #cbd5e1;
+  /* Slate 300 */
+  --aimd-text-tertiary: #94a3b8;
+  /* Slate 400 */
+
+  --aimd-border-subtle: #334155;
+  /* Slate 700 */
+  --aimd-border-light: #475569;
+  /* Slate 600 */
+  --aimd-border-medium: #64748b;
+  /* Slate 500 */
+  --aimd-border-strong: #94a3b8;
+  /* Slate 400 */
+
+  /* Status: Success (Dark) */
+  --aimd-status-success-bg: rgba(22, 163, 74, 0.1);
+  --aimd-status-success-border: #166534;
+  --aimd-status-success-text: #86efac;
+  --aimd-status-success-icon: #4ade80;
+
+  /* Status: Warning (Dark) */
+  --aimd-status-warning-bg: rgba(217, 119, 6, 0.1);
+  --aimd-status-warning-border: #92400e;
+  --aimd-status-warning-text: #fcd34d;
+  --aimd-status-warning-icon: #fbbf24;
+
+  /* Status: Error (Dark) */
+  --aimd-status-error-bg: rgba(220, 38, 38, 0.1);
+  --aimd-status-error-border: #991b1b;
+  --aimd-status-error-text: #fca5a5;
+  --aimd-status-error-icon: #f87171;
+
+  /* Status: Info (Dark) */
+  --aimd-status-info-bg: rgba(8, 145, 178, 0.1);
+  --aimd-status-info-border: #155e75;
+  --aimd-status-info-text: #7dd3fc;
+  --aimd-status-info-icon: #38bdf8;
+
+  /* Code Blocks (Dark) */
+  --aimd-code-bg: rgba(255, 255, 255, 0.1);
+  --aimd-code-text: #e2e8f0;
+  --aimd-pre-bg: #020617;
+  /* Slate 950+ */
+  --aimd-pre-border: #1e293b;
+
+  /* Elsevier VarInput Theme (Dark) */
+  --aimd-var-elsevier-text: #e2e8f0;
+  --aimd-var-elsevier-border: #94a3b8;
+  --aimd-var-elsevier-hover-bg: rgba(255, 255, 255, 0.08);
+  --aimd-var-elsevier-hover-border: #f1f5f9;
+
+  /* CheckPill Theme (Dark) */
+  --aimd-check-bg: #1e293b;
+  --aimd-check-border: #475569;
+  --aimd-check-text: #e2e8f0;
+  --aimd-check-accent: #2dd4bf;
+  --aimd-check-msg-bg: rgba(20, 184, 166, 0.15);
+  --aimd-check-msg-text: #5eead4;
+
+  /* Westlake Theme (Dark Mode) */
+  --aimd-westlake-primary: #4d9de0;
+  --aimd-westlake-primary-light: #7ab8ea;
+  --aimd-westlake-primary-dark: #00498F;
+  --aimd-westlake-accent: #f9a84d;
+  --aimd-westlake-accent-light: #fbc17a;
+  --aimd-westlake-neutral: #a8a4a5;
+  --aimd-westlake-neutral-light: #cccaca;
+
+  /* Westlake VarInput (Dark) */
+  --aimd-var-westlake-text: #7ab8ea;
+  --aimd-var-westlake-border: #4d9de0;
+  --aimd-var-westlake-hover-bg: rgba(77, 157, 224, 0.12);
+  --aimd-var-westlake-hover-border: #f9a84d;
+
+  /* Westlake CheckPill (Dark) */
+  --aimd-check-westlake-accent: #4d9de0;
+  --aimd-check-westlake-msg-bg: rgba(77, 157, 224, 0.15);
+  --aimd-check-westlake-msg-text: #7ab8ea;
+}
+
+/* --- Common Utility Classes --- */
+.aimd-text-primary {
+  color: var(--aimd-text-primary);
+}
+
+.aimd-text-secondary {
+  color: var(--aimd-text-secondary);
+}
+
+.aimd-text-tertiary {
+  color: var(--aimd-text-tertiary);
+}
+
+.aimd-bg-primary {
+  background-color: var(--aimd-bg-primary);
+}
+
+.aimd-bg-secondary {
+  background-color: var(--aimd-bg-secondary);
+}

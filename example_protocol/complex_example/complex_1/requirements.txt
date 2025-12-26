@@ -1,0 +1,12 @@
+# Airalogy Mock Server 依赖
+
+# Airalogy SDK (核心)
+airalogy>=0.0.13
+
+# HTTP 服务
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+
+# 可选：数据处理
+# pandas>=2.0.0
+# matplotlib>=3.7.0
